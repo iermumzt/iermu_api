@@ -20,13 +20,13 @@ class apimodel {
         $this->base->log('haikang log', json_encode($var));
 
         //人脸比对
-        $identify = $this->faceidentify();
+        // $identify = $this->faceidentify();
 
         //图片存储入库
-        $imagedata = $this->savepic();
+        // $imagedata = $this->savepic();
 
         //比对结果入库
-        $event = $this->saveevent();
+        // $event = $this->saveevent();
 
         $res = array('code' => 200, 'message'=>'成功', 'data'=>'');
         return $res;
