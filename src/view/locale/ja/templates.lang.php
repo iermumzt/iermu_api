@@ -1,0 +1,88 @@
+<?php
+
+$languages = array(
+	'confirm' => '確認',
+	'complete' => '完了',
+    
+    'seconds' => '秒',
+	
+	'logo_title' => 'Iermuスマートカメラ',
+	'page_header_keywords' => 'iermuスマートカメラ、スマートホーム、ホームセキュリティ、無線WiFi、双方向音声通話',
+	'page_header_desc' => 'IERMU SMART　CAMはスマートフォンより遠隔操作、確認できるデジタルカメラです。
+高解像度、赤外線暗視機能付き、またクラウド録画サービス、異常検知アラーム機能も完備しています。オンタイムでいつでも、どこでも確認できます
+',
+	'page_footer_weibo' => '新浪微博',
+	'page_footer_weixin' => '官方微信',
+	'page_footer_qun' => 'QQ群：132201149/222063498/307558437',
+	'page_footer_service' => 'サービス契約',
+	'page_footer_privacy' => 'プライバシー保護',
+	'page_footer_company' => 'Beijing iErmu Technology Co., Ltd',
+	'page_footer_icp' => '京ICP備13039528号-1',
+	
+	'register' => '新規登録',
+	'register_title' => 'IERMUへようこそ',
+	'register_agree' => 'IERMUサービス契約内容をご確認の上<a href="http://www.iermu.com/private#q1" target ="_blank">同意してください</a>',
+	'have_account' => 'すでにアカウントをお持ちしていますか？<a class = "login-agin">ログイン</a>',
+	'no_account' => 'まだアカウントがお持ちではない？<a class = "login-agin">立即注册</a>',
+	'download_app' => 'IERMUアプリをダウンロードしてください',
+	 
+	'click_error'=> 'IERMUサービス契約内容を同意されていません',
+
+	'email' => '電子メール',
+	'email_placeholder' => 'メールアドレスを入力してください',
+	'email_error_tip' => 'お持ちのメールアドレスを登録すれば、ログイン及びパスワードの再設定に使用できます',
+	'email_error_exist' => 'このメールアドレスは<a class="dianji">登録できました</a>，パスワードを忘れた場合は<a class="dianji reset2">ここをクリックして再設定します</a>',
+	'email_error_empty' => 'メールアドレスを入力してください',
+	'email_error_invalid' => 'メールアドレスは正しくありません',
+	'email_error_no' => 'メールアドレスは存在しません',
+	
+	'username' => 'ユーザー名',
+	'username_placeholder' => 'ユーザー名',
+	'username_error_exist' => 'このユーザー名は既に使われています',
+	'username_error_empty' => 'ユーザー名を入力してください',
+	'username_error_invalid' => '数字と記号と数字はユーザー名の初めに使用できません。記号はユーザー名の最後尾に使用できません',
+	'username_error_blank' => '4-20文字を入れてください。スペースは使用できません',
+	
+	'password' => 'パスワード',
+	'password_placeholder' => 'パスワードを入力してください',
+    'password_show' => '表示する',
+  'password_hide' => '隠す',
+	'password_error_tip' => 'アルファベットと数字を含んでください。最少6文字、大文字は区別されます',
+	'password_error_empty' => 'パスワードを入力してください',
+	'password_error_invalid' => 'パスワードは8文字以上を入力してください',
+  'password_error_not_match' => 'パスワードは不一致です。再度入力してください',
+	'confirm_password' => 'パスワードを確認',
+  'save_password' => 'パスワードを保存する',
+	
+	'login_title' => 'IERMUへログイン',
+	'login' => 'ログイン',
+	'login_placeholder' => 'メールアドレス/ユーザー名',
+	'remember_password' => ',パスワード忘れましたか',
+	'thirdparty_login' => 'サードパーティアカウントでログイン',
+	
+    'resetpwd' => 'パスワードを再設定します',
+	'resetpwd_title' => 'パスワードを忘れた場合',
+	'resetpwd_confirm' => 'アカウントを確認します',
+	'resetpwd_verify' => 'セキュリティ確認',
+	'resetpwd_reset' => 'パスワードをリセットします',
+    'forget_email' => 'ユーザー名とパスワードが忘れましたか？',
+	'confirm_email_title' => '登録されたメールアドレスを入力してください。パスワードを再設定するためののリンクを送信します',
+	'email_error_not_exist' => '入力されたアカウントは存在していません。確認して再入力してください',
+	'seccode_placeholder' => '認証コードを入力してください',
+	'seccode_mplaceholder' => '認証コード',
+	'seccode_error' => '正しい認証コードを入力してください',
+	'request_error' => '入力データが違います',
+	'seccode_change' => 'チェンジします',
+	'verify_email_title' => '認証メールは送信されました。24時間内に認証リンクにアクセスして認証してください。',
+	'verify_email_sendto' => '認証メールは送信済みです：',
+	'check_verify_email' => '認証メールを確認してください',
+	'verify_help' => '確認手段はなければ、IERMUカスタマサービスへご連絡ください。係員より対応させていただきます。',
+    'verify_help_m' => 'メールは届かない場合は、スパームメールフォルダなども確認してください。あるいはカスタムサービスへ連絡してください</span>。',
+	'reset_title' => 'パスワードを再設定します',
+	'reset_pass' => 'IERMUアカウントをリセット',
+	'reset_success' => 'パスワード再設定しました',
+    'reset_success_m' => '新しいパスワードを設定しました',
+    'go_email' => 'メールボックスを確認してください',
+	'go_login' => 'ログインします',
+	
+);

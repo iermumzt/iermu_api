@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={API_CHARSET}" />
+<meta content="iermu.com" name="Copyright" />
+<title>与i耳目连接</title>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+<link href="{BASE_API}/images/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="{BASE_API}/images/oauth2.css" rel="stylesheet" type="text/css" />
+<script src="{BASE_API}/js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    
+<header class="navbar navbar-static-top" id="top" role="banner">
+  <div class="container iermu-top-nav">
+    <h3 class="iermu-logo">登录i耳目帐号</h3>
+    <a href="{BASE_API}/oauth/2.0/reg?u={$page_url}" class="btn btn-default btn-reg">注册</a>
+  </div>
+</header>
+
+<div class="container iermu-login-box">
+<form class="login-form" autocomplete="off" method="post" action="{BASE_API}/oauth/2.0/login" name="login" onsubmit="return false;"> 
+    <input type="hidden" name="cid" value="{API_CID}">
+    <div class="alert alert-danger" role="alert" id="error-log" style="display:none;"></div>
+    <div class="input-group input-group-lg">
+        <span class="input-group-addon ico-username" id="label-username"></span>
+        <input type="text" class="form-control" placeholder="邮箱/用户名" onfocus="username_focus_change(1)" onblur="username_focus_change(0)" onchange="username_change()" onkeydown="username_change()"  name="username" id="input-username">
+        <span class="ico-del" style="display:none;" id="del-username" onclick="del_username()"></span>
+    </div>
+    <div class="input-group input-group-lg">
+        <span class="input-group-addon ico-passwd" id="label-passwd"></span>
+        <input type="password" class="form-control" placeholder="密码" onfocus="passwd_focus_change(1)" onblur="passwd_focus_change(0)" onchange="passwd_change()" onkeydown="passwd_change()" name="password" id="input-passwd">
+        <span class="ico-del" style="display:none;" id="del-passwd" onclick="del_passwd()"></span>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-submit" onclick="login_submit();return false;" id="btn-login-submit">立即登录</button>
+</form>
+</div>
+
+<script>
+function username_focus_change(f) {
+    if(f) {
+        $('#label-username').attr('class','input-group-addon ico-username-focus'); 
+        if($('#input-username').val()=='') {
+            $('#del-username').hide();
+        } else {
+            $('#del-username').show();
+        }
+    } else {
+        $('#label-username').attr('class','input-group-addon ico-username'); 
+    }
+}
+function username_change() {
+    if($('#input-username').val()=='') {
+        $('#del-username').hide();
+    } else {
+        $('#del-username').show();
+    }
+}
+function passwd_focus_change(f) {
+    if(f) {
+        $('#label-passwd').attr('class','input-group-addon ico-passwd-focus'); 
+        if($('#input-passwd').val()=='') {
+            $('#del-passwd').hide();
+        } else {
+            $('#del-passwd').show();
+        }
+    } else {
+        $('#label-passwd').attr('class','input-group-addon ico-passwd'); 
+    }
+}
+function passwd_change() {
+    if($('#input-passwd').val()=='') {
+        $('#del-passwd').hide();
+    } else {
+        $('#del-passwd').show();
+    }
+}
+function del_username() {
+    $('#del-username').hide();
+    $('#input-username').val('');
+    $('#input-username').focus();
+}
+function del_passwd() {
+    $('#del-passwd').hide();
+    $('#input-passwd').val('');
+    $('#input-passwd').focus();
+}
+function show_err(msg) {
+    $('#error-log').html(msg);
+    $('#error-log').show();
+}
+function login_submit() {
+    var username = $('#input-username').val();
+    var password = $('#input-passwd').val();
+    if(username=='') {
+        show_err("请输入您的帐号");
+        $('#input-username').focus();
+        return false;
+    }
+    if(password=='') {
+        show_err("请输入您的密码");
+        $('#input-passwd').focus();
+        return false;
+    }
+    show_load();
+    var post = $.ajax({
+      type: "POST",
+      url: "{BASE_API}/oauth/2.0/login",
+      data: {"username": username, "password": password, "cid": "{API_CID}"}
+    });
+    post.done(function(data) {
+        if(data==0) {
+            window.location.reload();
+        } else {
+            switch(data) {
+                case "-6":
+                    show_err("密码错误");
+                    break;
+                case "-3":
+                    show_err("用户不存在");
+                    break;
+                case "-2":
+                    show_err("密码错误");
+                    break;
+                case "-4":
+                    show_err("验证码错误");
+                    break;
+                case "-5":
+                    show_err("登录失败超过10次，请15分钟后再试");
+                    break;
+                default:
+                    show_err("登录失败，请刷新页面再试");
+            }
+        }
+        hide_load();
+    });
+    post.fail(function() {
+        show_err("登录失败，请刷新页面再试");
+        hide_load();
+    })
+    return false;
+}
+function show_load() {
+    $('#error-log').hide();
+    $('#btn-login-submit').html("登录中..."); 
+    $('#btn-login-submit').attr("disabled",true); 
+}
+function hide_load() {
+    $('#btn-login-submit').html("立即登录"); 
+    $('#btn-login-submit').attr("disabled",false); 
+}
+</script>
+
+</body>
+</html>

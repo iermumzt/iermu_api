@@ -1,0 +1,5 @@
+{
+    "require": {
+        "liushuangxi/ceph-swift-php": "^1.0"
+    }
+}

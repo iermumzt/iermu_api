@@ -1,0 +1,5 @@
+# by 
+*.DS_Store
+/src/logs
+/doc
+*.idea

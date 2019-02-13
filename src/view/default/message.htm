@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset={API_CHARSET}" />
+  <meta http-equiv="Pragma" content="no-cache" />  
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+  <meta name="renderer" content="webkit" />
+  <meta name="Keywords" content="{lang page_header_keywords}" />
+  <meta name="Description" content="{lang page_header_desc}" />
+  <title>{lang logo_title}</title>
+  <link href="/public/images/logo_ico.ico" type="image/x-icon" rel="shortcut icon" />
+  <style>
+    div.contenter {
+      width: 100%;
+      font-family: "FZLTCHK", "Microsoft Yahei", "Hiragino Sans GB";
+    }
+    div.contenter div.content {
+      margin: 0 auto;
+      margin-top: 300px;
+      text-align: center;
+    }
+    @media screen and (max-width:1000px){
+      div.contenter div.content{
+        margin-top: 200px;
+      }
+    }
+    div.contenter div.content label{
+      display: block;
+      font-size: 15px;
+      color: #666;
+      text-align: center;
+    }
+    <!--{if $type == 'success'}-->
+    div.contenter div.content label img{
+      margin-right: 15px;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+    div.contenter div.content label span{
+      display: inline-block;
+      vertical-align: super;
+    }
+    div.contenter div.content p{
+      font-size: 36px;
+      display: inline-block;
+      color: #666;
+      margin-top: 8px;
+    }
+    <!--{else}-->
+    div.contenter div.content label img{
+      display:block;
+      margin: 0 auto;
+      margin-bottom: 15px;
+    }
+    div.contenter div.content label p span{
+      display: block;
+    }
+    div.contenter div.content p{
+      line-height: 2;
+      font-size: 15px;
+      display: inline-block;
+      color: #666;
+      margin-top: 8px;
+    }
+    <!--{/if}-->
+    div.contenter div.content .miao{
+      font-size: 12px;
+    }
+  </style>
+<!--{if $redirect}-->
+  <script language="JavaScript" type="text/javascript">
+    function delayURL(url, delay) {
+      if(delay > 0) {
+        delay--;
+        document.getElementById("time").innerHTML = delay;
+      } else {
+        window.top.location.href = url;
+      }
+      setTimeout("delayURL('" + url + "', " + delay + ")", 1000);
+    }
+  </script>
+<!--{/if}-->
+</head>
+<body>
+  <div class="contenter">
+    <div class="content">
+      <label class = 'footer-page'>
+        <!--{if $type == 'success'}-->
+        <img src="{BASE_API}/images/right-pass.png">
+        <!--{elseif $type == 'error'}-->
+        <img src="{BASE_API}/images/error.png">
+        <!--{/if}-->
+        <span>{$message}</span>
+      </label>
+      <!--{if $redirect && $timeout}-->
+      <p id="time"<!--{if !$showtimeout}--> style="display:none;"<!--{/if}-->>{$timeout}</p><span class = 'miao'<!--{if !$showtimeout}--> style="display:none;"<!--{/if}-->>{lang seconds}</span>
+      <script type="text/javascript">
+        delayURL('{$redirect}', {$timeout});
+      </script>
+      <!--{/if}-->
+    </div>
+  </div> 
+</body>
+</html>
